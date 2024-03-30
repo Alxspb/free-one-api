@@ -104,15 +104,15 @@ Please refer to https://github.com/Soulter/hugging-chat-api
         
         random_int = random.randint(0, 1000000000)
         self.chatbot.change_conversation(self.chatbot.new_conversation())
-        
-        for resp in self.chatbot.query(
+
+        for resp in self.chatbot.chat(
             text=prompt,
             stream=True
         ):
             yield response.Response(
                 id=random_int,
                 finish_reason=response.FinishReason.NULL,
-                normal_message=resp['token'],
+                normal_message=resp.get('token'),
                 function_call=None
             )
         self.chatbot.delete_conversation(self.chatbot.current_conversation)
