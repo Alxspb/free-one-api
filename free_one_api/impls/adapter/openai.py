@@ -26,10 +26,10 @@ class OpenAI(llm.LLMLibAdapter):
         return "Use official openai api (with optional custom base url)"
 
     def supported_models(self) -> list[str]:
-        return [
+        return self.config.get("supported_models", [
             "gpt-3.5-turbo",
             "gpt-4"
-        ]
+        ])
 
     def function_call_supported(self) -> bool:
         return True
