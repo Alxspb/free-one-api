@@ -59,7 +59,9 @@ class OpenAI(llm.LLMLibAdapter):
     @property
     def chatbot(self) -> openai.OpenAI:
         if self._chatbot is None:
-            self._chatbot = openai.OpenAI(api_key=self.config["api_key"], base_url=self.config["base_url"])
+            self._chatbot = openai.OpenAI(
+                base_url=self.config.get("base_url"),
+                api_key=self.config.get("api_key"))
         return self._chatbot
 
     def __init__(self, config: dict, eval: evaluation.AbsChannelEvaluation):
