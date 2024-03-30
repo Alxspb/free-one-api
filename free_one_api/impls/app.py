@@ -22,6 +22,7 @@ from .adapter import bard
 from .adapter import gpt4free
 from .adapter import hugchat
 from .adapter import qianwen
+from .adapter import openai
 
 from . import log
 from . import cfg as cfgutil
@@ -203,6 +204,7 @@ async def make_application(config_path: str) -> Application:
         "xtekky_gpt4free": gpt4free.GPT4FreeAdapter,
         "Soulter_hugging-chat-api": hugchat.HuggingChatAdapter,
         "xw5xr6_revTongYi": qianwen.QianWenAdapter,
+        "openai": openai.OpenAI
     }
 
     for adapter_name in adapter_config_mapping:
